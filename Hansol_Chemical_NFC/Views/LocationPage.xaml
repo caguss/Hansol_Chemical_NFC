@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hansol_Chemical_NFC.Views.LocationPage"
+             xmlns:vm="clr-namespace:Hansol_Chemical_NFC.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:LocationViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Fill" Padding="20">
+            <StackLayout Padding="10"  VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+                <Label Text="위치 혹은 설비??" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Large"></Label>
+            </StackLayout>
+           
+            <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
+                <Label Text="사업장" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="22"></Label>
+                <Entry x:Name="txtCompany" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" WidthRequest="200"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
+                <Label Text="PLANT" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="22"></Label>
+                <Entry x:Name="txtPlant" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" WidthRequest="200"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
+                <Label Text="명칭" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="22"></Label>
+                <Entry x:Name="txtName" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" WidthRequest="200"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
+                <Label Text="코드" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="22"></Label>
+                <Entry x:Name="txtCode" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" WidthRequest="200"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
+                <Label Text="태그" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="22"></Label>
+                <Picker x:Name="cbTag" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" WidthRequest="200"
+                        SelectedItem="{Binding SelectedRecord}" ItemsSource="{Binding PickerChoices}"  ItemDisplayBinding="{Binding Name}"></Picker>
+            </StackLayout>
+            <StackLayout VerticalOptions="EndAndExpand" Padding="0,20,0,20">
+                <Button x:Name="btnRegist" Text="등록" CornerRadius="10" FontSize="30" TextColor="White" BackgroundColor="{StaticResource SignatureColor}" FontAttributes="Bold" HeightRequest="80" Pressed="btnRegist_Pressed"></Button>
+            </StackLayout>
+     
+        </StackLayout>
+    </ContentPage.Content>
+
+
+</ContentPage>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hansol_Chemical_NFC.Views.ItemDetailPage"
+             Title="{Binding Title}">
+
+    
+    <StackLayout Spacing="20" Padding="20">
+        <Label Text="화학명 :" FontSize="Medium" />
+        <Label Text="{Binding ChemicalName}" FontSize="Small"/>
+        <Label Text="CAS No:" FontSize="Medium" />
+        <Label Text="{Binding CASNo}" FontSize="Small"/>
+        <Label Text="물질명칭 :" FontSize="Medium" />
+        <Label Text="{Binding MaterialName}" FontSize="Small"/>
+        <Label Text="NFC 태그 :" FontSize="Medium" />
+        <Label Text="{Binding NFCTag}" FontSize="Small"/>
+    </StackLayout>
+    
+</ContentPage>

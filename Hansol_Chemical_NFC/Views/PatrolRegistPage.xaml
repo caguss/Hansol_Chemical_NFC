@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hansol_Chemical_NFC.Views.PatrolRegistPage"
+              xmlns:vm="clr-namespace:Hansol_Chemical_NFC.ViewModels"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:PatrolRegistViewModel />
+    </ContentPage.BindingContext>
+    <ContentView>
+        <ScrollView>
+
+            <StackLayout Padding="20">
+                <StackLayout Spacing="20" Padding="20">
+                    <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
+                        <Label Text="순찰종류" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="22"></Label>
+                        <Picker x:Name="cbType" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" WidthRequest="200"
+                        SelectedItem="{Binding SelectedRecord}" ItemsSource="{Binding PickerChoices}"  ItemDisplayBinding="{Binding Type}"></Picker>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
+                        <Label Text="위치" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="22"></Label>
+                        <Entry x:Name="txtLocation" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" WidthRequest="200"></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10" VerticalOptions="Center" Spacing="10">
+                        <Label Text="순찰내용" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" FontSize="22"></Label>
+                        <Editor x:Name="txtComment" Text="I am an Editor" AutoSize="TextChanges" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout VerticalOptions="EndAndExpand" Padding="0,10,0,20">
+                    <Button x:Name="btnRegist" Pressed="btnRegist_Clicked" Text="등록" CornerRadius="10" FontSize="30" TextColor="White" BackgroundColor="{StaticResource SignatureColor}" FontAttributes="Bold" HeightRequest="80"></Button>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentView>
+</ContentPage>

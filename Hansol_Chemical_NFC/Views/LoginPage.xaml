@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hansol_Chemical_NFC.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Fill" Orientation="Vertical" Padding="30,30,30,0">
+            <Frame BackgroundColor="White">
+                <Image Source="hansol_logo.png" BackgroundColor="White" ></Image>
+            </Frame>
+            
+            <StackLayout VerticalOptions="FillAndExpand">
+                
+                <StackLayout Padding="20,10,20,0">
+                    <Label Text="아이디" FontSize="20" TextColor="Black" >
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android">0,0,0,-10</On>
+                                <On Platform="iOS">0,40,0,0</On>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <Entry x:Name="usernameEntry" FontSize="17"  Placeholder="ID">
+                        <Entry.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android">0</On>
+                                <On Platform="iOS">0,20,0,0</On>
+                            </OnPlatform>
+                        </Entry.Margin>
+                    </Entry>
+                </StackLayout>
+                
+                <StackLayout Padding="20,10,20,0">
+                    <Label Text="비밀번호" FontSize="20" TextColor="Black">
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android">0,0,0,-10</On>
+                                <On Platform="iOS">0,40,0,0</On>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <Entry x:Name="passwordEntry" FontSize="17" IsPassword="True" Placeholder="Password">
+                        <Entry.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android">0</On>
+                                <On Platform="iOS">0,20,0,0</On>
+                            </OnPlatform>
+                        </Entry.Margin>
+                    </Entry>
+                    <Label x:Name="lblForgot" Text="비밀번호를 잊으셨나요?" FontAttributes="Bold"></Label>
+                    <StackLayout Orientation="Horizontal" Padding="0,10,0,0">
+                        <CheckBox x:Name="cbAutoLogin"></CheckBox>
+                        <Label Text="자동로그인" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  ></Label>
+                    </StackLayout>
+                </StackLayout>
+                
+                <StackLayout x:Name="SecondFactLayout" Padding="20,0,20,0" IsVisible="false" VerticalOptions="CenterAndExpand">
+                    <Label Text="2차 인증" FontSize="20" TextColor="Black">
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android">0</On>
+                                <On Platform="iOS">0,40,0,0</On>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <Entry x:Name="SecondFactEntry" FontSize="17"  IsPassword="True" Placeholder="6자리 입력" MaxLength="6">
+                        <Entry.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android">0</On>
+                                <On Platform="iOS">0,20,0,0</On>
+                            </OnPlatform>
+                        </Entry.Margin>
+                    </Entry>
+                </StackLayout>
+                
+            </StackLayout>
+
+            <StackLayout VerticalOptions="End" Padding="0,10,0,20">
+                <Button x:Name="btnLogin" Text="로그인" CornerRadius="10" FontSize="30" TextColor="White" BackgroundColor="{StaticResource SignatureColor}" FontAttributes="Bold" HeightRequest="80" Clicked="OnLoginButtonClicked"></Button>
+            </StackLayout>
+
+        </StackLayout>
+   
+    </ContentPage.Content>
+    
+
+</ContentPage>

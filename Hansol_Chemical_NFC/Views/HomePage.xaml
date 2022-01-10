@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hansol_Chemical_NFC.Views.HomePage"
+             xmlns:vm="clr-namespace:Hansol_Chemical_NFC.ViewModels"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,10,20" VerticalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <ContentView Padding="10,10,0,40" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                        <StackLayout  HorizontalOptions="Fill" VerticalOptions ="Start">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                                <Label Text="{Binding Username}" FontSize="40" TextColor="Black" FontAttributes="Bold"></Label>
+                                <Label Text="님,"  FontSize="40" TextColor="Black" ></Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="반갑습니다."  FontSize="30" TextColor="Black" ></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <ContentView Padding="10,10,0,40" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                    <StackLayout  HorizontalOptions="Fill" VerticalOptions ="Start">
+                        <Label Text="오늘은"  FontSize="25" TextColor="Black" ></Label>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TodoCommand}"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="해야할 일 " FontSize="35" TextColor="Black" FontAttributes="Bold"></Label>
+                            <Label Text="{Binding TodoCount}" FontSize="35" TextColor="Black" FontAttributes="Bold"></Label>
+                            <Label Text="건" FontSize="35" TextColor="Black"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ResponseCommand}"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="잔여 결재 " FontSize="35" TextColor="Black" FontAttributes="Bold"></Label>
+                            <Label Text="{Binding ResponseCount}" FontSize="35" TextColor="Black" FontAttributes="Bold"></Label>
+                            <Label Text="건" FontSize="35" TextColor="Black" ></Label>
+                        </StackLayout>
+                        <Label Text="남아 있습니다."  FontSize="25" TextColor="Black" Padding="10" ></Label>
+                    </StackLayout>
+                </ContentView>
+            </StackLayout>
+            <StackLayout VerticalOptions="EndAndExpand"  Padding="20,10,20,10">
+                <Button x:Name="btnPatrol" Text="순찰" Command="{Binding PatrolCommand}" CornerRadius="10" FontSize="30" TextColor="White" BackgroundColor="{StaticResource SignatureColor}" FontAttributes="Bold" HeightRequest="80"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

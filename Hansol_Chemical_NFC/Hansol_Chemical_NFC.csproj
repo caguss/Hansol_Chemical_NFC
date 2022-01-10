@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\Logger\PlatformLoggingService.android.cs" />
+    <Compile Remove="Services\Logger\PlatformLoggingService.apple.cs" />
+    <Compile Remove="Services\Logger\PlatformLoggingService.uwp.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Services\DataStore" />
+    <None Remove="Services\NewFile1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="4.7.13" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.14" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />  
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\ContactPage.xaml.cs">
+      <DependentUpon>ContactPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EmergencyEvacutionPage.xaml.cs">
+      <DependentUpon>EmergencyEvacutionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PatrolDetailPopupPage.xaml.cs">
+      <DependentUpon>PatrolDetailPopupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PatrolRegistPage.xaml.cs">
+      <DependentUpon>PatrolRegistPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PatrolPage.xaml.cs">
+      <DependentUpon>PatrolPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LocationPage.xaml.cs">
+      <DependentUpon>LocationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NFCPage.xaml.cs">
+      <DependentUpon>NFCPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EvacutionPopupPage.xaml.cs">
+      <DependentUpon>EvacutionPopupPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Services\Logger\PlatformLoggingService.android.cs" />
+    <None Include="Services\Logger\PlatformLoggingService.apple.cs" />
+    <None Include="Services\Logger\PlatformLoggingService.uwp.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\PatrolDetailPopupPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\EvacutionPopupPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

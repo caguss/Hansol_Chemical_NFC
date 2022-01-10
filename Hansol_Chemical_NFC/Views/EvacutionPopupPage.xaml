@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    x:Class="Hansol_Chemical_NFC.Views.EvacutionPopupPage"
+    xmlns:popups="http://rotorgames.com"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <!--You can set an animation in the xaml file or in the csharp code behind-->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <pancakeView:PancakeView
+        CornerRadius="15"
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand"
+        Padding="3"
+        IsClippedToBounds="True"
+        BackgroundColor="White">
+
+        <Frame Margin="0"
+                   Padding="1"
+                   IsClippedToBounds="True"
+                   CornerRadius="15"
+                   HasShadow="False"
+                   BorderColor="Silver">
+            <!--You can use any elements here which are extended from Xamarin.Forms.View-->
+            <StackLayout Spacing="10" >
+                <ContentView x:Name="imgcontent" VerticalOptions="FillAndExpand" Padding="10">
+                    <Image VerticalOptions="CenterAndExpand" x:Name="img" Source="{Binding Imglink}" WidthRequest="500" HeightRequest="200">
+                        <Image.GestureRecognizers>
+                            <PinchGestureRecognizer PinchUpdated="OnPinchUpdated" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </ContentView>
+                <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+                    <Button x:Name="btn_SubmitAction" WidthRequest="300" Command="{Binding CloseCommand}" HeightRequest="70" CornerRadius="15" BackgroundColor="#0066b2" TextColor="White" Text="확인" FontSize="Large" FontAttributes="Bold"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </pancakeView:PancakeView>
+</pages:PopupPage>

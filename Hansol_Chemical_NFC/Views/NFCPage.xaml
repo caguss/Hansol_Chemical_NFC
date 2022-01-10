@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hansol_Chemical_NFC.Views.NFCPage"
+             xmlns:vm="clr-namespace:Hansol_Chemical_NFC.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:TagViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Fill" Padding="20">
+            <StackLayout Padding="10"  VerticalOptions="StartAndExpand">
+                <Label Text="기기를 태그에 접촉시켜 주세요." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Medium"></Label>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
+                <Label Text="태그코드" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="Medium"></Label>
+                <Entry x:Name="txtTagCode" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" IsEnabled="False" WidthRequest="200"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
+                <Label Text="태그명" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="Medium"></Label>
+                <Entry x:Name="txtTagName" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" WidthRequest="200"></Entry>
+            </StackLayout>
+            <StackLayout VerticalOptions="EndAndExpand" Padding="0,20,0,20">
+                <Button x:Name="btnRegist" Text="등록" CornerRadius="10" FontSize="30" TextColor="White" BackgroundColor="{StaticResource SignatureColor}" FontAttributes="Bold" HeightRequest="80" Pressed="btnRegist_Pressed" ></Button>
+            </StackLayout>
+          
+        </StackLayout>
+    </ContentPage.Content>
+
+
+</ContentPage>
