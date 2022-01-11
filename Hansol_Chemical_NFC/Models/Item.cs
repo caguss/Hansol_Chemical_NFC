@@ -10,9 +10,6 @@
         public string CASNo { get; set; }
         public string AttachFile { get; set; }
 
-        public string Main { get => CASNo; }
-        public string Title { get => MaterialName; }
-        public string Description { get => ChemicalName; }
 
     }
 }

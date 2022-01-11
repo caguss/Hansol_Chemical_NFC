@@ -5,11 +5,64 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Hansol_Chemical_NFC.ViewModels"  
              xmlns:model="clr-namespace:Hansol_Chemical_NFC.Models"  
+             xmlns:ser="clr-namespace:Hansol_Chemical_NFC.Services"  
              x:Name="BrowseItemsPage">
-    <!--
-      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
-      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
-    -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="MSDSTemplate">
+                <StackLayout x:Name="stlbinding" Padding="10" x:DataType="model:Item">
+                    <Label Text="{Binding ID}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                    <Label Text="{Binding MaterialName}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                    <Label Text="{Binding ChemicalName}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="ResponseTemplate">
+                <StackLayout x:Name="stlbinding" Padding="10" x:DataType="model:Response">
+                    <Label Text="{Binding ResponseName}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                    <Label Text="{Binding Requester}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                    <Label Text="{Binding Date}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="UserTemplate">
+                <StackLayout x:Name="stlbinding" Padding="10" x:DataType="model:User">
+                    <Label Text="{Binding Name}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                    <Label Text="{Binding Position}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                    <Label Text="{Binding PhoneNum}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                </StackLayout>
+            </DataTemplate>
+            <ser:ModelDataTemplateSelector x:Key="ModelTemplateSelector"
+                UserTemplate="{StaticResource UserTemplate}"
+                ResponseTemplate="{StaticResource ResponseTemplate}"
+                MSDSTemplate="{StaticResource MSDSTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout>
         <SearchBar Placeholder="화학명, 물질명, CAS No..." CancelButtonColor="Black" x:Name="txtsearch" TextTransform="Lowercase" TextChanged="OnTextChanged" SearchCommand="{Binding PerformSearch}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference txtsearch}}" HorizontalTextAlignment="Center" FontSize="Medium">
