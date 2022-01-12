@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
-namespace Hansol_Chemical_NFC.Services
+namespace Hansol_Chemical_NFC.ViewModels
 {
     public class ModelDataTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate ResponseTemplate { get; set; }
+        public DataTemplate ApprovalTemplate { get; set; }
         public DataTemplate UserTemplate { get; set; }
         public DataTemplate MSDSTemplate { get; set; }
 
@@ -17,8 +15,8 @@ namespace Hansol_Chemical_NFC.Services
             {
                 switch (item.GetType().Name)
                 {
-                    case "Response":
-                        return ResponseTemplate;
+                    case "Approval":
+                        return ApprovalTemplate;
                     case "User":
                         return UserTemplate;
                     case "Item":

@@ -5,10 +5,11 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Hansol_Chemical_NFC.ViewModels"  
              xmlns:model="clr-namespace:Hansol_Chemical_NFC.Models"  
-             xmlns:ser="clr-namespace:Hansol_Chemical_NFC.Services"  
              x:Name="BrowseItemsPage">
+
     <ContentPage.Resources>
         <ResourceDictionary>
+   
             <DataTemplate x:Key="MSDSTemplate">
                 <StackLayout x:Name="stlbinding" Padding="10" x:DataType="model:Item">
                     <Label Text="{Binding ID}" 
@@ -25,22 +26,7 @@
                             FontSize="13" />
                 </StackLayout>
             </DataTemplate>
-            <DataTemplate x:Key="ResponseTemplate">
-                <StackLayout x:Name="stlbinding" Padding="10" x:DataType="model:Response">
-                    <Label Text="{Binding ResponseName}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                    <Label Text="{Binding Requester}" 
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                    <Label Text="{Binding Date}" 
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                </StackLayout>
-            </DataTemplate>
+
             <DataTemplate x:Key="UserTemplate">
                 <StackLayout x:Name="stlbinding" Padding="10" x:DataType="model:User">
                     <Label Text="{Binding Name}" 
@@ -57,47 +43,45 @@
                             FontSize="13" />
                 </StackLayout>
             </DataTemplate>
-            <ser:ModelDataTemplateSelector x:Key="ModelTemplateSelector"
-                UserTemplate="{StaticResource UserTemplate}"
-                ResponseTemplate="{StaticResource ResponseTemplate}"
-                MSDSTemplate="{StaticResource MSDSTemplate}" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <StackLayout>
-        <SearchBar Placeholder="화학명, 물질명, CAS No..." CancelButtonColor="Black" x:Name="txtsearch" TextTransform="Lowercase" TextChanged="OnTextChanged" SearchCommand="{Binding PerformSearch}"
-                   SearchCommandParameter="{Binding Text, Source={x:Reference txtsearch}}" HorizontalTextAlignment="Center" FontSize="Medium">
-
-        </SearchBar>
-        
-        <RefreshView x:Name="listRefreshView" x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-            <CollectionView x:Name="ItemsListView"
-                ItemsSource="{Binding Items}"
-                SelectionMode="None">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="10" x:DataType="model:Item">
-                            <Label Text="{Binding Main}" 
+            <DataTemplate x:Key="ApprovalTemplate">
+                <StackLayout x:Name="stlbinding" Padding="10" x:DataType="model:Approval">
+                    <Label Text="{Binding ApprovalName}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" />
-                            <Label Text="{Binding Title}" 
+                    <Label Text="{Binding Requester}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="13" />
-                            <Label Text="{Binding Description}" 
+                    <Label Text="{Binding Date}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="13" />
-                            <!--<StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
                                 NumberOfTapsRequired="1"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
                                 CommandParameter="{Binding .}">
-                                </TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>-->
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </DataTemplate>
+            <local:ModelDataTemplateSelector x:Key="ModelTemplateSelector"
+                UserTemplate="{StaticResource UserTemplate}"
+                ApprovalTemplate="{StaticResource ApprovalTemplate}"
+                MSDSTemplate="{StaticResource MSDSTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <StackLayout>
+        <SearchBar Placeholder="화학명, 물질명, CAS No..." CancelButtonColor="Black" x:Name="txtsearch" TextTransform="Lowercase" TextChanged="OnTextChanged" SearchCommand="{Binding PerformSearch}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference txtsearch}}" HorizontalTextAlignment="Center" FontSize="Medium">
+        </SearchBar>
+
+        <RefreshView x:Name="listRefreshView" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="ItemsListView"
+                SelectionMode="None"  ItemTemplate="{StaticResource ModelTemplateSelector}">
             </CollectionView>
         </RefreshView>
     </StackLayout>

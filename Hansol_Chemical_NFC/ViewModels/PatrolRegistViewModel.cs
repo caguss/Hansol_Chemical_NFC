@@ -1,7 +1,5 @@
 ﻿using Hansol_Chemical_NFC.Models;
-using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace Hansol_Chemical_NFC.ViewModels

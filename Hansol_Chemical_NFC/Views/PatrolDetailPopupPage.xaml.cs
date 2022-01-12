@@ -1,7 +1,5 @@
 ﻿using Hansol_Chemical_NFC.Models;
 using Hansol_Chemical_NFC.ViewModels;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using Xamarin.Forms.Xaml;
 
 namespace Hansol_Chemical_NFC.Views
@@ -31,7 +29,7 @@ namespace Hansol_Chemical_NFC.Views
             // optional code here   
         }
 
-       
+
         public void OnAnimationFinished(bool isPopAnimation)
         {
             // optional code here   

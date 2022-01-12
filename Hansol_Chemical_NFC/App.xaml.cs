@@ -22,7 +22,7 @@ namespace Hansol_Chemical_NFC
 
                 if (true) //최신 버전일 경우
                 {
-            MainPage = new AppShell();
+                    MainPage = new AppShell();
                 }
                 else
                 {
@@ -35,7 +35,7 @@ namespace Hansol_Chemical_NFC
             }
             else
             {
-            MainPage = new AppShell();
+                MainPage = new AppShell();
                 Shell.Current.GoToAsync(nameof(LoginPage));
             }
         }

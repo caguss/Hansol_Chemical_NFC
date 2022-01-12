@@ -79,16 +79,37 @@
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
     <FlyoutItem Title="Home" Icon="home_outline.png">
-        <ShellContent Route="Home" ContentTemplate="{DataTemplate local:HomePage}" />
+        <ShellContent Route="Home" ContentTemplate="{DataTemplate local:HomePage}"/>
+        
     </FlyoutItem>
     <FlyoutItem Title="MSDS 조회" Icon="database_search_outline.png">
-        <ShellContent Route="MSDS" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="MSDS">
+            <ShellContent.ContentTemplate>
+                <DataTemplate>
+                    <local:ItemsPage>
+                        <x:Arguments>
+                            <x:String>MSDS</x:String>
+                        </x:Arguments>
+                    </local:ItemsPage>
+                </DataTemplate>
+            </ShellContent.ContentTemplate>
+        </ShellContent>
     </FlyoutItem>
     <FlyoutItem Title="화학물질 조회" Icon="clipboard_text_search_outline.png">
-        <ShellContent Route="MSDS" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="Chemical">
+            <ShellContent.ContentTemplate>
+                <DataTemplate>
+                    <local:ItemsPage>
+                        <x:Arguments>
+                            <x:String>Chemical</x:String>
+                        </x:Arguments>
+                    </local:ItemsPage>
+                </DataTemplate>
+            </ShellContent.ContentTemplate>
+        </ShellContent>
     </FlyoutItem>
     <FlyoutItem Title="비상대응 조회" Icon="clipboard_text_search_outline.png">
-        <ShellContent Route="MSDS" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="EmergencyResponse" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="NFC 등록" Icon="cellphone_nfc.png">
         <ShellContent Route="NFCPage" ContentTemplate="{DataTemplate local:NFCPage}" />
@@ -98,16 +119,36 @@
     </FlyoutItem>
     <!--#region nts 추가-->
     <FlyoutItem Title="비상연락망" Icon="card_account_phone_outline.png">
-        <ShellContent Route="Contact" ContentTemplate="{DataTemplate local:ContactPage}" />
+        <ShellContent Route="Contact">
+            <ShellContent.ContentTemplate>
+                <DataTemplate>
+                    <local:ItemsPage>
+                        <x:Arguments>
+                            <x:String>User</x:String>
+                        </x:Arguments>
+                    </local:ItemsPage>
+                </DataTemplate>
+            </ShellContent.ContentTemplate>
+        </ShellContent>
     </FlyoutItem>
     <FlyoutItem Title="순찰" Icon="police_badge_outline.png">
         <ShellContent Route="Patrol" ContentTemplate="{DataTemplate local:PatrolPage}" />
     </FlyoutItem>
     <FlyoutItem Title="비상대피도" Icon="exit_run.png">
-        <ShellContent Route="MSDS" ContentTemplate="{DataTemplate local:EmergencyEvacutionPage}" />
+        <ShellContent Route="Evacution" ContentTemplate="{DataTemplate local:EmergencyEvacutionPage}" />
     </FlyoutItem>
     <FlyoutItem Title="결재" Icon="credit_card_marker_outline.png">
-        <ShellContent Route="MSDS" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="Approval">
+            <ShellContent.ContentTemplate>
+                <DataTemplate>
+                    <local:ItemsPage>
+                        <x:Arguments>
+                            <x:String>Approval</x:String>
+                        </x:Arguments>
+                    </local:ItemsPage>
+                </DataTemplate>
+            </ShellContent.ContentTemplate>
+        </ShellContent>
     </FlyoutItem>
     <!--#endregion-->
 

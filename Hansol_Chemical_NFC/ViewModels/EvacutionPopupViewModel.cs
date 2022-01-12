@@ -25,7 +25,7 @@ namespace Hansol_Chemical_NFC.ViewModels
         public EvacutionPopupViewModel(string imgLink)
         {
             CloseCommand = new Command(OnClosedClicked);
-            this.imgLink =  imgLink;
+            this.imgLink = imgLink;
         }
         private async void OnClosedClicked(object obj)
         {

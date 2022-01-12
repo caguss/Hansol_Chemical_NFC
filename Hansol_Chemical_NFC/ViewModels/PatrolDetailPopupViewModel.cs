@@ -1,6 +1,5 @@
 ﻿using Rg.Plugins.Popup.Services;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using Xamarin.Forms;
 
@@ -47,9 +46,10 @@ namespace Hansol_Chemical_NFC.ViewModels
                 LoadItemId(value);
             }
         }
-     
+
         public Command CloseCommand { get; }
-        public string IsFinishtxt {
+        public string IsFinishtxt
+        {
             get
             {
                 if (isFinish)
@@ -86,6 +86,6 @@ namespace Hansol_Chemical_NFC.ViewModels
             }
         }
 
-       
+
     }
 }

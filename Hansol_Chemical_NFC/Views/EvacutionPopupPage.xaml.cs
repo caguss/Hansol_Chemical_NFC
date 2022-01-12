@@ -15,7 +15,7 @@ namespace Hansol_Chemical_NFC.Views
 
         public EvacutionPopupPage(string imglink)
         {
-            BindingContext  = new EvacutionPopupViewModel(imglink);
+            BindingContext = new EvacutionPopupViewModel(imglink);
 
             InitializeComponent();
 
@@ -58,7 +58,7 @@ namespace Hansol_Chemical_NFC.Views
             {
                 startScale = imgcontent.Scale;
                 imgcontent.AnchorX = 0;
-                imgcontent.AnchorY = 0;    
+                imgcontent.AnchorY = 0;
             }
             if (e.Status == Xamarin.Forms.GestureStatus.Running)
             {
@@ -73,12 +73,12 @@ namespace Hansol_Chemical_NFC.Views
                 double deltaHeight = Height / (imgcontent.Height * startScale);
                 double originY = (e.ScaleOrigin.Y - deltaY) * deltaHeight;
                 double targetX = xOffset - (originY * imgcontent.Width) * (currentScale - startScale);
-                double targetY = yOffset - (originY * imgcontent.Height) * (currentScale -startScale);
+                double targetY = yOffset - (originY * imgcontent.Height) * (currentScale - startScale);
                 imgcontent.TranslationX = targetX.Clamp(-imgcontent.Width * (currentScale - 1), 0);
                 imgcontent.TranslationY = targetY.Clamp(-imgcontent.Height * (currentScale - 1), 0);
                 imgcontent.Scale = currentScale;
             }
-            if(e.Status == Xamarin.Forms.GestureStatus.Completed)
+            if (e.Status == Xamarin.Forms.GestureStatus.Completed)
             {
                 xOffset = imgcontent.TranslationX;
                 yOffset = imgcontent.TranslationY;

@@ -8,41 +8,49 @@ namespace Hansol_Chemical_NFC.Views
 {
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel _viewmodel;
-        public ObservableCollection<Item> Users { get; }
+        ItemsViewModel _viewmodel = null;
+
 
         public ItemsPage()
+        { }
+        public ItemsPage(string current)
         {
-            BindingContext = _viewmodel = new ItemsViewModel();
-
+            InitializeComponent();
+            string type = "";
             //분기별 가져오는 데이터 바꾸기
-            var current = Shell.Current.CurrentItem.CurrentItem.Route;
+            //var current = Shell.Current.CurrentItem.CurrentItem.Route;
             switch (current)
             {
-                case "IMPL_MSDS":
-
+                case "MSDS":
+                    type = "MSDS";
+                    BindingContext = _viewmodel = new ItemsViewModel(type);
+                    ItemsListView.ItemsSource = _viewmodel.Items;
                     break;
-                case "IMPL_Chemical":
+                case "Chemical":
+                    type = "Chemical";
+                    BindingContext = _viewmodel = new ItemsViewModel(type);
+                    ItemsListView.ItemsSource = _viewmodel.Items;
                     break;
-                case "IMPL_EmergencyResponse":
+                case "EmergencyResponse":
+                    type = "Response";
+                    BindingContext = _viewmodel = new ItemsViewModel(type);
+                    ItemsListView.ItemsSource = _viewmodel.Items;
                     break;
-                case "IMPL_Contact":
-
+                case "User":
+                    type = "User";
+                    BindingContext = _viewmodel = new ItemsViewModel(type);
+                    ItemsListView.ItemsSource = _viewmodel.Users;
                     break;
-                case "IMPL_EmergencyMap":
-
+                case "Approval":
+                    type = "Approval";
+                    BindingContext = _viewmodel = new ItemsViewModel(type);
+                    ItemsListView.ItemsSource = _viewmodel.Approvals;
                     break;
-                case "IMPL_Response":
-                    BindingContext = _viewmodel = new ItemsViewModel();
-
-                    break;
-                case "IMPL_Todo":
-                    break;
-                default:
-                    break;
+                    default:
+                    return;
             }
 
-            InitializeComponent();
+            listRefreshView.Command.Execute(type);
 
         }
 
@@ -61,11 +69,19 @@ namespace Hansol_Chemical_NFC.Views
         /// <param name="e"></param>
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            //검색 action
-            SearchBar searchBar = (SearchBar)sender;
-            List<Item> result = _viewmodel.ItemDataStore.GetSearchResults(searchBar.Text);
-            ItemsListView.ItemsSource = result;
+            ////검색 action
+            //SearchBar searchBar = (SearchBar)sender;
+            //List<Item> result = _viewmodel.ItemDataStore.GetSearchResults(searchBar.Text);
+            //ItemsListView.ItemsSource = result;
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Shell.Current.GoToAsync(nameof(HomePage));
+
+            return true;
+        }
+
 
     }
 }
