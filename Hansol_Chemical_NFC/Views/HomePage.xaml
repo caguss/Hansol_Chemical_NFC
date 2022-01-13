@@ -38,9 +38,9 @@
                             <Label Text="건" FontSize="35" TextColor="Black"></Label>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ResponseCommand}"/>
-                            </StackLayout.GestureRecognizers>
+                            <!--<StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ApprovalCommand}"/>
+                            </StackLayout.GestureRecognizers>-->
                             <Label Text="잔여 결재 " FontSize="35" TextColor="Black" FontAttributes="Bold"></Label>
                             <Label Text="{Binding ResponseCount}" FontSize="35" TextColor="Black" FontAttributes="Bold"></Label>
                             <Label Text="건" FontSize="35" TextColor="Black" ></Label>

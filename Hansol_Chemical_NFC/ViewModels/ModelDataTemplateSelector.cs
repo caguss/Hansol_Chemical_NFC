@@ -5,18 +5,18 @@ namespace Hansol_Chemical_NFC.ViewModels
 {
     public class ModelDataTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate ApprovalTemplate { get; set; }
+        //public DataTemplate ApprovalTemplate { get; set; }
         public DataTemplate UserTemplate { get; set; }
         public DataTemplate MSDSTemplate { get; set; }
+        public DataTemplate ApprovalTemplete { get; set; }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            try
-            {
+     
                 switch (item.GetType().Name)
                 {
                     case "Approval":
-                        return ApprovalTemplate;
+                        return ApprovalTemplete;
                     case "User":
                         return UserTemplate;
                     case "Item":
@@ -25,11 +25,7 @@ namespace Hansol_Chemical_NFC.ViewModels
 
                 return MSDSTemplate;
 
-            }
-            catch (Exception ex)
-            {
-                return MSDSTemplate;
-            }
+
         }
     }
 }

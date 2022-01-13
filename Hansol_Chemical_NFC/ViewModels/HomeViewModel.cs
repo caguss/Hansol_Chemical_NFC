@@ -7,7 +7,6 @@ namespace Hansol_Chemical_NFC.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         private ICommand todoCommand;
-        private ICommand responseCommand;
         private ICommand patrolCommand;
         private string todoCount;
         private string responseCount;
@@ -15,7 +14,6 @@ namespace Hansol_Chemical_NFC.ViewModels
 
 
         public ICommand TodoCommand => todoCommand ?? new Command(ToDoTapped);
-        public ICommand ResponseCommand => responseCommand ?? new Command(ResponseTapped);
         public ICommand PatrolCommand => patrolCommand ?? new Command(PatrolTapped);
 
         private async void PatrolTapped(object obj)
@@ -36,12 +34,7 @@ namespace Hansol_Chemical_NFC.ViewModels
             username = App.UserName;
         }
 
-        private void ResponseTapped(object obj)
-        {
-            //결제 페이지로 이동?
-
-
-        }
+      
 
         private void ToDoTapped(object obj)
         {

@@ -23,7 +23,7 @@ namespace Hansol_Chemical_NFC.Views
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

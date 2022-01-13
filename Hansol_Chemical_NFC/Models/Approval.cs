@@ -2,13 +2,10 @@
 {
     public class Approval
     {
-        public string ID; //결재 ID
-        public string ApprovalName; //결재 제목
-        public string Description; //본문
-        public string Date; //일자
-        public string Requester; //요청자
-        public object attach; //첨부
-
-        //결재 제목, 일자, 요청자, 결재리스트, 본문, 첨부를 확인하고 결
+        public string ID { get; set; } // id
+        public string Location { get; set; } //위치
+        public string Type { get; set; } // 종류
+        public string Summary { get; set; } //
+        public bool Checked { get; set; }
     }
 }

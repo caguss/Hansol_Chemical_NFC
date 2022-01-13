@@ -11,7 +11,7 @@ namespace Hansol_Chemical_NFC.Services
             {
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

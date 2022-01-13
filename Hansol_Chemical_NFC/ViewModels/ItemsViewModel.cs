@@ -13,32 +13,32 @@ namespace Hansol_Chemical_NFC.ViewModels
     public class ItemsViewModel : BaseViewModel
     {
         private Item _selectedItem;
-        private Approval _selectedApproval;
         private User _selectedUser;
+        private Approval _selectedApproval;
 
         public ObservableCollection<Item> Items { get; }
-        public ObservableCollection<Approval> Approvals { get; }
         public ObservableCollection<User> Users { get; }
+        public ObservableCollection<Approval> Approvals { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
-        public Command<Item> ItemTapped { get; }
+        public Command<Approval> ItemTapped { get; }
 
     
 
         public ItemsViewModel()
         {
             DependencyService.Register<ItemDataStore>();
-            DependencyService.Register<ApprovalDataStore>();
             DependencyService.Register<UserDataStore>();
+            DependencyService.Register<ApprovalDataStore>();
             Items = new ObservableCollection<Item>();
-            Approvals = new ObservableCollection<Approval>();
             Users = new ObservableCollection<User>();
-            ItemDataStore.GetRefresh();
-            ApprovalDataStore.GetRefresh();
-            UserDataStore.GetRefresh();
-            ExecuteLoadItemsCommand("Item");
-            ExecuteLoadItemsCommand("Approval");
-            ExecuteLoadItemsCommand("User");
+            Approvals = new ObservableCollection<Approval>();
+            //ItemDataStore.GetRefresh();
+            //ApprovalDataStore.GetRefresh();
+            //UserDataStore.GetRefresh();
+            //ExecuteLoadItemsCommand("Item");
+            //ExecuteLoadItemsCommand("Approval");
+            //ExecuteLoadItemsCommand("User");
         }
         public ItemsViewModel(string Type)
         {
@@ -60,21 +60,10 @@ namespace Hansol_Chemical_NFC.ViewModels
 
 
                     break;
-                case "Approval":
-                    Title = "결재";
-                    DependencyService.Register<ApprovalDataStore>();
-
-                    Approvals = new ObservableCollection<Approval>();
-                    ApprovalDataStore.GetRefresh();
-
-                    LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand("Approval"));
-                    //ItemTapped = new Command<BModel>(OnItemSelected);
-
-                    break;
                 case "Chemical":
                     Title = "화학물질 검색";
-                    DependencyService.Register<ApprovalDataStore>();
-                    Approvals = new ObservableCollection<Approval>();
+                    //DependencyService.Register<ApprovalDataStore>();
+                    //Approvals = new ObservableCollection<Approval>();
                     //ApprovalDataStore.GetRefresh();
 
                     LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand("Chemical"));
@@ -88,6 +77,16 @@ namespace Hansol_Chemical_NFC.ViewModels
                     UserDataStore.GetRefresh();
 
                     LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand("User"));
+                    //ItemTapped = new Command<BModel>(OnItemSelected);
+
+                    break;
+                case "Approval":
+                    Title = "결재";
+                    DependencyService.Register<ApprovalDataStore>();
+                    Approvals = new ObservableCollection<Approval>();
+                    ApprovalDataStore.GetRefresh();
+
+                    LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand("Approval"));
                     //ItemTapped = new Command<BModel>(OnItemSelected);
 
                     break;
@@ -109,20 +108,20 @@ namespace Hansol_Chemical_NFC.ViewModels
                             Items.Add(item);
                         }
                         break;
-                    case "Approval":
-                        Approvals.Clear();
-                        var approvals = await ApprovalDataStore.GetItemsAsync(true);
-                        foreach (var item in approvals)
-                        {
-                            Approvals.Add(item);
-                        }
-                        break;
                     case "User":
                         Users.Clear();
                         var users = await UserDataStore.GetItemsAsync(true);
                         foreach (var item in users)
                         {
                             Users.Add(item);
+                        }
+                        break;
+                    case "Approval":
+                        Approvals.Clear();
+                        var approvals = await ApprovalDataStore.GetItemsAsync(true);
+                        foreach (var item in approvals)
+                        {
+                            Approvals.Add(item);
                         }
                         break;
                 }
@@ -143,12 +142,12 @@ namespace Hansol_Chemical_NFC.ViewModels
             //SelectedItem = null;
         }
 
-        public Approval SelectedItem
+        public Item SelectedItem
         {
-            get => _selectedApproval;
+            get => _selectedItem;
             set
             {
-                SetProperty(ref _selectedApproval, value);
+                SetProperty(ref _selectedItem, value);
                 OnItemSelected(value);
             }
         }
@@ -156,23 +155,23 @@ namespace Hansol_Chemical_NFC.ViewModels
 
      
 
-        async void OnItemSelected(Approval item)
+        async void OnItemSelected(Item item)
         {
             if (item == null)
                 return;
 
-            // This will push the ItemDetailPage onto the navigation stack
-            //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ID)}={item.ID}");
+             //This will push the ItemDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ID)}={item.ID}");
         }
 
         public ICommand PerformSearch => new Command<string>((string query) =>
-        { 
-            //var result = ItemDataStore.GetSearchResults(query);
-            //Items.Clear();
-            //foreach (var item in result)
-            //{
-            //    Items.Add(item);
-            //}
+        {
+            var result = ItemDataStore.GetSearchResults(query);
+            Items.Clear();
+            foreach (var item in result)
+            {
+                Items.Add(item);
+            }
         });
     }
 }

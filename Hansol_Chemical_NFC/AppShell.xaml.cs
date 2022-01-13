@@ -20,6 +20,7 @@ namespace Hansol_Chemical_NFC
             Routing.RegisterRoute(nameof(PatrolRegistPage), typeof(PatrolRegistPage));
             //Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
 
         }
 

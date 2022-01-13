@@ -46,7 +46,7 @@ namespace Hansol_Chemical_NFC.Views
                     BindingContext = _viewmodel = new ItemsViewModel(type);
                     ItemsListView.ItemsSource = _viewmodel.Approvals;
                     break;
-                    default:
+                default:
                     return;
             }
 

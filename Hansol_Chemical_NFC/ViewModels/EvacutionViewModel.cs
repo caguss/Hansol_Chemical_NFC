@@ -58,7 +58,7 @@ namespace Hansol_Chemical_NFC.ViewModels
         {
             _popup.Popped -= Popup_Popped;
         }
-        public void OnAppearing()
+        public new void OnAppearing()
         {
             _popup.Popped += Popup_Popped;
         }

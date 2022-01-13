@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:Hansol_Chemical_NFC.ViewModels"  
              xmlns:model="clr-namespace:Hansol_Chemical_NFC.Models"  
              x:Name="BrowseItemsPage">
+   
 
     <ContentPage.Resources>
         <ResourceDictionary>
-   
             <DataTemplate x:Key="MSDSTemplate">
-                <StackLayout x:Name="stlbinding" Padding="10" x:DataType="model:Item">
+                <StackLayout x:Name="stlbinding" Padding="10">
                     <Label Text="{Binding ID}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
@@ -26,9 +26,31 @@
                             FontSize="13" />
                 </StackLayout>
             </DataTemplate>
-
+            <DataTemplate x:Key="ApprovalTemplete">
+                <StackLayout Padding="10" Orientation="Horizontal">
+                    <StackLayout>
+                        <Label Text="{Binding Location}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                        <Label Text="{Binding Summary}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand">
+                        <CheckBox IsChecked="False" />
+                    </StackLayout>
+                    <!--<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:PatrolsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}">
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>-->
+                </StackLayout>
+            </DataTemplate>
             <DataTemplate x:Key="UserTemplate">
-                <StackLayout x:Name="stlbinding" Padding="10" x:DataType="model:User">
+                <StackLayout x:Name="stlbinding" Padding="10">
                     <Label Text="{Binding Name}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
@@ -43,8 +65,8 @@
                             FontSize="13" />
                 </StackLayout>
             </DataTemplate>
-            <DataTemplate x:Key="ApprovalTemplate">
-                <StackLayout x:Name="stlbinding" Padding="10" x:DataType="model:Approval">
+            <!--<DataTemplate x:Key="ApprovalTemplate">
+                <StackLayout x:Name="stlbinding" Padding="10">
                     <Label Text="{Binding ApprovalName}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
@@ -57,18 +79,18 @@
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="13" />
-                    <StackLayout.GestureRecognizers>
+                    --><!--<StackLayout.GestureRecognizers>
                         <TapGestureRecognizer
                                 NumberOfTapsRequired="1"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
                                 CommandParameter="{Binding .}">
                         </TapGestureRecognizer>
-                    </StackLayout.GestureRecognizers>
+                    </StackLayout.GestureRecognizers>--><!--
                 </StackLayout>
-            </DataTemplate>
+            </DataTemplate>-->
             <local:ModelDataTemplateSelector x:Key="ModelTemplateSelector"
                 UserTemplate="{StaticResource UserTemplate}"
-                ApprovalTemplate="{StaticResource ApprovalTemplate}"
+                ApprovalTemplete="{StaticResource ApprovalTemplete}"
                 MSDSTemplate="{StaticResource MSDSTemplate}" />
         </ResourceDictionary>
     </ContentPage.Resources>

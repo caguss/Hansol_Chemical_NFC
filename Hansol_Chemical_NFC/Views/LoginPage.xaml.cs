@@ -104,7 +104,7 @@ namespace Hansol_Chemical_NFC.Views
                     await DisplayAlert("실패", "아이디와 비밀번호가 일치하지 않습니다.", "확인");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 await DisplayAlert("실패", "통신에 이상이 발생했습니다.\n네트워크를 확인해 주세요.", "확인");

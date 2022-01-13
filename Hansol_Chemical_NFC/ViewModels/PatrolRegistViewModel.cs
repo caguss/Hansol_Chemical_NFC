@@ -6,11 +6,7 @@ namespace Hansol_Chemical_NFC.ViewModels
 {
     public class PatrolRegistViewModel : BaseViewModel
     {
-        private string id;
-        private string location;
-        private string type;
-        private string summary;
-        private bool complete;
+ 
         public Command<Patrol> AddItemCommand { get; }
 
 
