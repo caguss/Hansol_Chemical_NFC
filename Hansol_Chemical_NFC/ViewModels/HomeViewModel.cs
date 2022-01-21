@@ -1,4 +1,5 @@
 ﻿using Hansol_Chemical_NFC.Views;
+using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -8,6 +9,7 @@ namespace Hansol_Chemical_NFC.ViewModels
     {
         private ICommand todoCommand;
         private ICommand patrolCommand;
+        private ICommand approvalCommand;
         private string todoCount;
         private string responseCount;
         private string username;
@@ -15,6 +17,13 @@ namespace Hansol_Chemical_NFC.ViewModels
 
         public ICommand TodoCommand => todoCommand ?? new Command(ToDoTapped);
         public ICommand PatrolCommand => patrolCommand ?? new Command(PatrolTapped);
+        public ICommand ApprovalCommand => approvalCommand ?? new Command(ApprovalTapped);
+
+        private async void ApprovalTapped(object obj)
+        {
+            await Shell.Current.GoToAsync("//Approval");
+
+        }
 
         private async void PatrolTapped(object obj)
         {

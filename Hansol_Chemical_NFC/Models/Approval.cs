@@ -3,9 +3,10 @@
     public class Approval
     {
         public string ID { get; set; } // id
-        public string Location { get; set; } //위치
+        public string ApprovalName { get; set; }
+        public string Requester { get; set; }
+        public string Attach { get; set; }
         public string Type { get; set; } // 종류
-        public string Summary { get; set; } //
-        public bool Checked { get; set; }
+        public string Summary { get; set; }
     }
 }

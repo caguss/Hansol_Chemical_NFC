@@ -62,7 +62,7 @@ namespace Hansol_Chemical_NFC.Services
             {
                 return approvals;
             }
-            var test = approvals.Where(x => x.Location.ToLower().Contains(searchString) || x.Type.ToLower().Contains(searchString) || x.Summary.ToLower().Contains(searchString)).ToList();
+            var test = approvals.Where(x => x.ApprovalName.ToLower().Contains(searchString) || x.Type.ToLower().Contains(searchString) || x.Summary.ToLower().Contains(searchString)).ToList();
             return test;
         }
         public void GetRefresh()
@@ -71,12 +71,12 @@ namespace Hansol_Chemical_NFC.Services
             approvals = new List<Approval>()
             {
 
-                new Approval { Location = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "First item"},
-                new Approval { Location = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "Second item" },
-                new Approval { Location = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "Third item"},
-                new Approval { Location = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "Fourth item"},
-                new Approval { Location = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "Fifth item"},
-                new Approval { Location = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "Sixth item"}
+                new Approval { ApprovalName = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "First item"},
+                new Approval { ApprovalName = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "Second item" },
+                new Approval { ApprovalName = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "Third item"},
+                new Approval { ApprovalName = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "Fourth item"},
+                new Approval { ApprovalName = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "Fifth item"},
+                new Approval { ApprovalName = Guid.NewGuid().ToString(), ID = Guid.NewGuid().ToString(),Summary = Guid.NewGuid().ToString(), Type = "Sixth item"}
             };
         }
     }

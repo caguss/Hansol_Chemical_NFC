@@ -1,10 +1,7 @@
 ﻿namespace Hansol_Chemical_NFC.Models
 {
-    public class EmergencyEvacution
+    public class Chemical
     {
-
-        public string Name { get; set; }
-        public string Image { get; set; }
         private string nfcTag = "";
         public string ID { get; set; }
         public string MaterialName { get; set; }

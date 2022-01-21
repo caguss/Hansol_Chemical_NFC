@@ -23,7 +23,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>Hansol_Chemical_NFC</string>
+	<string>한솔케미칼</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.companyname.Hansol_Chemical_NFC</string>
 	<key>CFBundleVersion</key>

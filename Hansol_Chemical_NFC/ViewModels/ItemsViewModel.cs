@@ -15,10 +15,12 @@ namespace Hansol_Chemical_NFC.ViewModels
         private Item _selectedItem;
         private User _selectedUser;
         private Approval _selectedApproval;
+        private Chemical _selectedChemical;
 
         public ObservableCollection<Item> Items { get; }
         public ObservableCollection<User> Users { get; }
         public ObservableCollection<Approval> Approvals { get; }
+        public ObservableCollection<Chemical> Chemicals { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
         public Command<Approval> ItemTapped { get; }
@@ -30,15 +32,12 @@ namespace Hansol_Chemical_NFC.ViewModels
             DependencyService.Register<ItemDataStore>();
             DependencyService.Register<UserDataStore>();
             DependencyService.Register<ApprovalDataStore>();
+            DependencyService.Register<ChemicalDataStore>();
             Items = new ObservableCollection<Item>();
             Users = new ObservableCollection<User>();
             Approvals = new ObservableCollection<Approval>();
-            //ItemDataStore.GetRefresh();
-            //ApprovalDataStore.GetRefresh();
-            //UserDataStore.GetRefresh();
-            //ExecuteLoadItemsCommand("Item");
-            //ExecuteLoadItemsCommand("Approval");
-            //ExecuteLoadItemsCommand("User");
+            Chemicals = new ObservableCollection<Chemical>();
+
         }
         public ItemsViewModel(string Type)
         {
@@ -62,9 +61,9 @@ namespace Hansol_Chemical_NFC.ViewModels
                     break;
                 case "Chemical":
                     Title = "화학물질 검색";
-                    //DependencyService.Register<ApprovalDataStore>();
-                    //Approvals = new ObservableCollection<Approval>();
-                    //ApprovalDataStore.GetRefresh();
+                    DependencyService.Register<ChemicalDataStore>();
+                    Chemicals = new ObservableCollection<Chemical>();
+                    ChemicalDataStore.GetRefresh();
 
                     LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand("Chemical"));
                     //ItemTapped = new Command<BModel>(OnItemSelected);

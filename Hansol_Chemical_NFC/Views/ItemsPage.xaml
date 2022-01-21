@@ -7,7 +7,6 @@
              xmlns:model="clr-namespace:Hansol_Chemical_NFC.Models"  
              x:Name="BrowseItemsPage">
    
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="MSDSTemplate">
@@ -29,11 +28,15 @@
             <DataTemplate x:Key="ApprovalTemplete">
                 <StackLayout Padding="10" Orientation="Horizontal">
                     <StackLayout>
-                        <Label Text="{Binding Location}" 
+                        <Label Text="{Binding ApprovalName}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" />
-                        <Label Text="{Binding Summary}" 
+                        <Label Text="{Binding Type}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                        <Label Text="{Binding Requester}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="13" />

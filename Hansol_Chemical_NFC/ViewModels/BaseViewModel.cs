@@ -13,6 +13,7 @@ namespace Hansol_Chemical_NFC.ViewModels
         public IDataStore<Item> ItemDataStore => DependencyService.Get<IDataStore<Item>>();
         public IDataStore<User> UserDataStore => DependencyService.Get<IDataStore<User>>();
         public IDataStore<Approval> ApprovalDataStore=> DependencyService.Get<IDataStore<Approval>>();
+        public IDataStore<Chemical> ChemicalDataStore => DependencyService.Get<IDataStore<Chemical>>();
         public IDataStore<Patrol> PatrolDataStore => DependencyService.Get<IDataStore<Patrol>>();
         public IDataStore<EmergencyEvacution> EvacutionDataStore => DependencyService.Get<IDataStore<EmergencyEvacution>>();
 
