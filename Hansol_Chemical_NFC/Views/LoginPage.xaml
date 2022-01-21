@@ -7,17 +7,29 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Fill" Orientation="Vertical" Padding="30,30,30,0">
             <Frame BackgroundColor="White">
-                <Image Source="hansol_logo.png" BackgroundColor="White" ></Image>
+                <Image Source="hansol_logo.png" BackgroundColor="White">
+                    <Image.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS"> 100</On>
+                        </OnPlatform>
+                    </Image.HeightRequest>
+                </Image>
             </Frame>
             
             <StackLayout VerticalOptions="FillAndExpand">
                 
-                <StackLayout Padding="20,10,20,0">
+                <StackLayout>
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android">20,10,20,0</On>
+                            <On Platform="iOS">20,0,20,0</On>
+                        </OnPlatform>
+                    </StackLayout.Padding>
                     <Label Text="아이디" FontSize="20" TextColor="Black" >
                         <Label.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android">0,0,0,-10</On>
-                                <On Platform="iOS">0,40,0,0</On>
+                                <On Platform="iOS">0,20,0,0</On>
                             </OnPlatform>
                         </Label.Margin>
                     </Label>
@@ -25,18 +37,24 @@
                         <Entry.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android">0</On>
-                                <On Platform="iOS">0,20,0,0</On>
+                                <On Platform="iOS">0,10,0,0</On>
                             </OnPlatform>
                         </Entry.Margin>
                     </Entry>
                 </StackLayout>
                 
-                <StackLayout Padding="20,10,20,0">
+                <StackLayout>
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android">20,10,20,0</On>
+                            <On Platform="iOS">20,0,20,0</On>
+                        </OnPlatform>
+                    </StackLayout.Padding>
                     <Label Text="비밀번호" FontSize="20" TextColor="Black">
                         <Label.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android">0,0,0,-10</On>
-                                <On Platform="iOS">0,40,0,0</On>
+                                <On Platform="iOS">0,10,0,0</On>
                             </OnPlatform>
                         </Label.Margin>
                     </Label>
@@ -44,23 +62,49 @@
                         <Entry.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android">0</On>
-                                <On Platform="iOS">0,20,0,0</On>
+                                <On Platform="iOS">0,10,0,0</On>
                             </OnPlatform>
                         </Entry.Margin>
                     </Entry>
-                    <Label x:Name="lblForgot" Text="비밀번호를 잊으셨나요?" FontAttributes="Bold"></Label>
-                    <StackLayout Orientation="Horizontal" Padding="0,10,0,0">
-                        <CheckBox x:Name="cbAutoLogin"></CheckBox>
+                    <Label x:Name="lblForgot" Text="비밀번호를 잊으셨나요?" FontAttributes="Bold">
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android">0</On>
+                                <On Platform="iOS">0,10,0,0</On>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <StackLayout Orientation="Horizontal" >
+                        <StackLayout.Padding>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android">0,10,0,0</On>
+                                <On Platform="iOS">0</On>
+                            </OnPlatform>
+                        </StackLayout.Padding>
+                        <CheckBox x:Name="cbAutoLogin">
+                            <CheckBox.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="Android">0,10,0,0</On>
+                                    <On Platform="iOS">0,0,0,0</On>
+                                </OnPlatform>
+                            </CheckBox.Margin>
+                        </CheckBox>
                         <Label Text="자동로그인" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  ></Label>
                     </StackLayout>
                 </StackLayout>
                 
-                <StackLayout x:Name="SecondFactLayout" Padding="20,0,20,0" IsVisible="false" VerticalOptions="CenterAndExpand">
+                <StackLayout x:Name="SecondFactLayout" IsVisible="false" VerticalOptions="CenterAndExpand">
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android">20,0,20,0</On>
+                            <On Platform="iOS">20,-30,20,-10</On>
+                        </OnPlatform>
+                    </StackLayout.Padding>
                     <Label Text="2차 인증" FontSize="20" TextColor="Black">
                         <Label.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android">0</On>
-                                <On Platform="iOS">0,40,0,0</On>
+                                <On Platform="iOS">0,0,0,0</On>
                             </OnPlatform>
                         </Label.Margin>
                     </Label>
@@ -68,7 +112,7 @@
                         <Entry.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android">0</On>
-                                <On Platform="iOS">0,20,0,0</On>
+                                <On Platform="iOS">0,10,0,0</On>
                             </OnPlatform>
                         </Entry.Margin>
                     </Entry>
@@ -76,7 +120,13 @@
                 
             </StackLayout>
 
-            <StackLayout VerticalOptions="End" Padding="0,10,0,20">
+            <StackLayout VerticalOptions="End">
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android">0,10,0,20</On>
+                        <On Platform="iOS">0,0,0,30</On>
+                    </OnPlatform>
+                </StackLayout.Padding>
                 <Button x:Name="btnLogin" Text="로그인" CornerRadius="10" FontSize="30" TextColor="White" BackgroundColor="{StaticResource SignatureColor}" FontAttributes="Bold" HeightRequest="80" Clicked="OnLoginButtonClicked"></Button>
             </StackLayout>
 

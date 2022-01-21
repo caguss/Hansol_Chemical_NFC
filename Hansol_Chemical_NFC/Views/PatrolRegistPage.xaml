@@ -13,16 +13,37 @@
             <StackLayout Padding="20">
                 <StackLayout Spacing="20" Padding="20">
                     <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
-                        <Label Text="순찰종류" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="22"></Label>
+                        <Label Text="순찰종류" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" >
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android">22</On>
+                                    <On Platform="iOS">18</On>
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
                         <Picker x:Name="cbType" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" WidthRequest="200"
                         SelectedItem="{Binding SelectedRecord}" ItemsSource="{Binding PickerChoices}"  ItemDisplayBinding="{Binding Type}"></Picker>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
-                        <Label Text="위치" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="22"></Label>
+                        <Label Text="위치" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center">
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android">22</On>
+                                    <On Platform="iOS">18</On>
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
                         <Entry x:Name="txtLocation" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Center" WidthRequest="200"></Entry>
                     </StackLayout>
                     <StackLayout Orientation="Vertical" Padding="10" VerticalOptions="Center" Spacing="10">
-                        <Label Text="순찰내용" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" FontSize="22"></Label>
+                        <Label Text="순찰내용" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center">
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android">22</On>
+                                    <On Platform="iOS">18</On>
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
                         <Editor x:Name="txtComment" Text="I am an Editor" AutoSize="TextChanges" />
                     </StackLayout>
                 </StackLayout>
