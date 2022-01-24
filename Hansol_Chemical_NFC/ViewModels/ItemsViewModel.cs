@@ -12,11 +12,8 @@ namespace Hansol_Chemical_NFC.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        private Item _selectedItem;
-        private User _selectedUser;
         private Approval _selectedApproval;
-        private Chemical _selectedChemical;
-
+        private string pagetype;
         public ObservableCollection<Item> Items { get; }
         public ObservableCollection<User> Users { get; }
         public ObservableCollection<Approval> Approvals { get; }
@@ -42,7 +39,7 @@ namespace Hansol_Chemical_NFC.ViewModels
         public ItemsViewModel(string Type)
         {
             //ItemTapped = new Command<Item>(OnItemSelected);
-
+            pagetype = Type;
             //AddItemCommand = new Command(OnAddItem);
 
             switch (Type)
@@ -86,7 +83,7 @@ namespace Hansol_Chemical_NFC.ViewModels
                     ApprovalDataStore.GetRefresh();
 
                     LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand("Approval"));
-                    //ItemTapped = new Command<BModel>(OnItemSelected);
+                    ItemTapped = new Command<Approval>(OnItemSelected);
 
                     break;
             }
@@ -123,6 +120,14 @@ namespace Hansol_Chemical_NFC.ViewModels
                             Approvals.Add(item);
                         }
                         break;
+                    case "Chemical":
+                        Chemicals.Clear();
+                        var chemicals = await ChemicalDataStore.GetItemsAsync(true);
+                        foreach (var item in chemicals)
+                        {
+                            Chemicals.Add(item);
+                        }
+                        break;
                 }
             }
             catch (Exception ex)
@@ -138,15 +143,15 @@ namespace Hansol_Chemical_NFC.ViewModels
         public void OnAppearing()
         {
             IsBusy = true;
-            //SelectedItem = null;
+            SelectedItem = null;
         }
 
-        public Item SelectedItem
+        public Approval SelectedItem
         {
-            get => _selectedItem;
+            get => _selectedApproval;
             set
             {
-                SetProperty(ref _selectedItem, value);
+                SetProperty(ref _selectedApproval, value);
                 OnItemSelected(value);
             }
         }
@@ -154,23 +159,52 @@ namespace Hansol_Chemical_NFC.ViewModels
 
      
 
-        async void OnItemSelected(Item item)
+        async void OnItemSelected(Approval item)
         {
             if (item == null)
                 return;
-
-             //This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ID)}={item.ID}");
         }
 
         public ICommand PerformSearch => new Command<string>((string query) =>
         {
-            var result = ItemDataStore.GetSearchResults(query);
-            Items.Clear();
-            foreach (var item in result)
+            switch (pagetype)
             {
-                Items.Add(item);
+                case "MSDS":
+                    var result_msds = ItemDataStore.GetSearchResults(query);
+                    Items.Clear();
+                    foreach (var item in result_msds)
+                    {
+                        Items.Add(item);
+                    }
+                    break;
+                case "Chemical":
+                    var result_chemical = ChemicalDataStore.GetSearchResults(query);
+                    Chemicals.Clear();
+                    foreach (var item in result_chemical)
+                    {
+                        Chemicals.Add(item);
+                    }
+                    break;
+                case "User":
+                    var result_user = UserDataStore.GetSearchResults(query);
+                    Users.Clear();
+                    foreach (var item in result_user)
+                    {
+                        Users.Add(item);
+                    }
+                    break;
+                case "Approval":
+                    var result_approval = ApprovalDataStore.GetSearchResults(query);
+                    Approvals.Clear();
+                    foreach (var item in result_approval)
+                    {
+                        Approvals.Add(item);
+                    }
+                    break;
             }
+
+         
         });
     }
 }

@@ -9,6 +9,7 @@ namespace Hansol_Chemical_NFC.Views
     public partial class ItemsPage : ContentPage
     {
         ItemsViewModel _viewmodel = null;
+        string type = "";
 
 
         public ItemsPage()
@@ -16,9 +17,9 @@ namespace Hansol_Chemical_NFC.Views
         public ItemsPage(string current)
         {
             InitializeComponent();
-            string type = "";
             //분기별 가져오는 데이터 바꾸기
             //var current = Shell.Current.CurrentItem.CurrentItem.Route;
+            type = current;
             switch (current)
             {
                 case "MSDS":
@@ -70,15 +71,31 @@ namespace Hansol_Chemical_NFC.Views
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
             ////검색 action
-            //SearchBar searchBar = (SearchBar)sender;
-            //List<Item> result = _viewmodel.ItemDataStore.GetSearchResults(searchBar.Text);
-            //ItemsListView.ItemsSource = result;
+            SearchBar searchBar = (SearchBar)sender;
+            switch (type)
+            {
+                case "MSDS":
+                    var result_msds = _viewmodel.ItemDataStore.GetSearchResults(searchBar.Text);
+                    ItemsListView.ItemsSource = result_msds;
+                    break;
+                case "Chemical":
+                    var result_chemical = _viewmodel.ChemicalDataStore.GetSearchResults(searchBar.Text);
+                    ItemsListView.ItemsSource = result_chemical;
+                    break;
+                case "User":
+                    var result_user = _viewmodel.UserDataStore.GetSearchResults(searchBar.Text);
+                    ItemsListView.ItemsSource = result_user;
+                    break;
+                case "Approval":
+                    var result_approval = _viewmodel.ApprovalDataStore.GetSearchResults(searchBar.Text);
+                    ItemsListView.ItemsSource = result_approval;
+                    break;
+            }
         }
 
         protected override bool OnBackButtonPressed()
         {
             Shell.Current.GoToAsync(nameof(HomePage));
-
             return true;
         }
 

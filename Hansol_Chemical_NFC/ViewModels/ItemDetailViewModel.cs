@@ -8,35 +8,40 @@ namespace Hansol_Chemical_NFC.ViewModels
     public class ItemDetailViewModel : BaseViewModel
     {
         private string id;
-        private string materialName;
-        private string chemicalName;
-        private string nfcTag;
-        private string cASNO;
+        private string approvalName;
+        private string requester;
+        private string type;
+        private string summary;
+        private string attach;
 
         public ItemDetailViewModel()
         {
             Title = "상세정보";
         }
-        public string MaterialName
+        public string ApprovalName
         {
-            get => materialName;
-            set => SetProperty(ref materialName, value);
+            get => approvalName;
+            set => SetProperty(ref approvalName, value);
         }
-
-        public string ChemicalName
+        public string Attach
         {
-            get => chemicalName;
-            set => SetProperty(ref chemicalName, value);
+            get => attach;
+            set => SetProperty(ref attach, value);
         }
-        public string NFCTag
+        public string Requester
         {
-            get => nfcTag;
-            set => SetProperty(ref nfcTag, value);
+            get => requester;
+            set => SetProperty(ref requester, value);
         }
-        public string CASNo
+        public string Type
         {
-            get => cASNO;
-            set => SetProperty(ref cASNO, value);
+            get => type;
+            set => SetProperty(ref type, value);
+        }
+        public string Summary
+        {
+            get => summary;
+            set => SetProperty(ref summary, value);
         }
         public string ID
         {
@@ -55,12 +60,13 @@ namespace Hansol_Chemical_NFC.ViewModels
         {
             try
             {
-                var item = await ItemDataStore.GetItemAsync(itemId);
+                var item = await ApprovalDataStore.GetItemAsync(itemId);
                 SetProperty(ref id, item.ID);
-                MaterialName = item.MaterialName;
-                ChemicalName = item.ChemicalName;
-                NFCTag = item.NFCTag;
-                CASNo = item.CASNo;
+                ApprovalName = item.ApprovalName;
+                Requester = item.Requester;
+                Type = item.Type;
+                Summary = item.Summary;
+                Attach = item.Attach;
             }
             catch (Exception)
             {

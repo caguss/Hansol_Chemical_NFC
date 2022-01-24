@@ -6,14 +6,16 @@
 
     
     <StackLayout Spacing="20" Padding="20">
-        <Label Text="화학명 :" FontSize="Medium" />
-        <Label Text="{Binding ChemicalName}" FontSize="Small"/>
-        <Label Text="CAS No:" FontSize="Medium" />
-        <Label Text="{Binding CASNo}" FontSize="Small"/>
-        <Label Text="물질명칭 :" FontSize="Medium" />
-        <Label Text="{Binding MaterialName}" FontSize="Small"/>
-        <Label Text="NFC 태그 :" FontSize="Medium" />
-        <Label Text="{Binding NFCTag}" FontSize="Small"/>
+        <Label Text="결제명 :" FontSize="Medium" />
+        <Label Text="{Binding ApprovalName}" FontSize="Small"/>
+        <Label Text="요청자:" FontSize="Medium" />
+        <Label Text="{Binding Requester}" FontSize="Small"/>
+        <Label Text="결제종류 :" FontSize="Medium" />
+        <Label Text="{Binding Type}" FontSize="Small"/>
+        <Label Text="내용 :" FontSize="Medium" />
+        <Label Text="{Binding Summary}" FontSize="Small"/>
+        <Label Text="첨부자료 :" FontSize="Medium" />
+        <Label Text="{Binding Attach}" FontSize="Small"/>
     </StackLayout>
     
 </ContentPage>
